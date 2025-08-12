@@ -52,7 +52,7 @@ const Header = () => {
   const navLinks = ['About', 'Skills', 'Projects', 'Testimonials', 'Contact'];
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg z-50 border-b border-slate-700/50">
+    <header className="fixed font-plus top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg z-50 border-b border-slate-700/50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="text-xl font-bold text-white">Fynn Emmanuel Junior</h1>
         <nav className="hidden md:flex items-center space-x-8">
@@ -101,7 +101,7 @@ const Header = () => {
 
 // --- Hero Section ---
 const HeroSection = () => (
-  <section className="relative bg-slate-900 text-white pt-32 pb-20 md:pt-48 md:pb-28">
+  <section className="relative bg-slate-900 text-white pt-32 pb-20 md:pt-48 md:pb-28 font-plus">
     <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial="initial" animate="animate" variants={staggerContainer}>
             <motion.h1 variants={fadeIn('up')} className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
@@ -131,7 +131,7 @@ const HeroSection = () => (
 
 // --- About Me Section ---
 const AboutMeSection = () => (
-  <SectionWrapper id="about" className="bg-slate-800 text-white">
+  <SectionWrapper id="about" className="bg-slate-800 text-white font-plus">
     <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold mb-12 text-center">About Me</motion.h2>
     <div className="max-w-4xl mx-auto text-center">
         <motion.p variants={fadeIn()} className="text-xl text-gray-300 leading-relaxed">
@@ -144,7 +144,7 @@ const AboutMeSection = () => (
 // --- Skills Section ---
 const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'Prisma', 'AWS', 'Docker', 'TypeScript'];
 const SkillsSection = () => (
-    <SectionWrapper id="skills">
+    <SectionWrapper id="skills" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
         <motion.div variants={staggerContainer} className="flex flex-wrap gap-4 justify-center">
             {skills.map(skill => (
@@ -163,7 +163,7 @@ const projects = [
   { title: 'Project Gamma', description: 'Web App, Next.js, Stripe API', image: '/project-gamma.png' },
 ];
 const ProjectsSection = () => (
-    <SectionWrapper id="projects" className="bg-white">
+    <SectionWrapper id="projects" className="bg-white font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Featured Projects</motion.h2>
         <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {projects.map(project => (
@@ -191,7 +191,7 @@ const testimonials = [
     { name: 'Ethan Bennett', stars: 5, quote: 'Fynn is a highly efficient developer who consistently delivers high-quality work. His ability to understand complex requirements and translate them into functional code is remarkable.' },
 ];
 const TestimonialsSection = () => (
-    <SectionWrapper id="testimonials">
+    <SectionWrapper id="testimonials" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">What Clients Say</motion.h2>
         <motion.div variants={staggerContainer} className="max-w-3xl mx-auto grid md:grid-cols-2 gap-8">
             {testimonials.map(t => (
@@ -214,7 +214,7 @@ const TestimonialsSection = () => (
 
 // --- Contact Section ---
 const ContactSection = () => (
-    <SectionWrapper id="contact" className="bg-white">
+    <SectionWrapper id="contact" className="bg-white font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Let&apos;s Build Together</motion.h2>
         <motion.p variants={fadeIn(undefined, 0.2)} className="text-lg text-gray-600 mb-8 text-center max-w-2xl mx-auto">Have a project in mind? I&apos;d love to hear about it. Fill out the form below or send me an email.</motion.p>
         <motion.form variants={fadeIn()} className="max-w-xl mx-auto space-y-4">
@@ -237,7 +237,7 @@ const ContactSection = () => (
 
 // --- Footer ---
 const Footer = () => (
-    <footer className="bg-slate-900 text-gray-400">
+    <footer className="bg-slate-900 text-gray-400 font-plus">
         <div className="container mx-auto px-6 py-8 text-center">
             <div className="flex justify-center space-x-6 mb-4">
                 <a href="#" className="hover:text-teal-400"><Twitter /></a>
