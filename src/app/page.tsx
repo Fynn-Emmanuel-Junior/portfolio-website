@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, Star, Twitter, Linkedin, Github, Code, Briefcase, Mail } from 'lucide-react';
 import Image1 from '../assets/4.jpg';
 
 // --- Animation Variants ---
-const fadeIn = (direction = 'up', delay = 0) => ({
+const fadeIn = (direction = 'up', delay = 0):  Variants => ({
   initial: {
     y: direction === 'up' ? 40 : -40,
     opacity: 0,
