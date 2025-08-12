@@ -54,7 +54,7 @@ const Header = () => {
   return (
     <header className="fixed font-plus top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg z-50 border-b border-slate-700/50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-white">Fynn Emmanuel Junior</h1>
+       <a href="/" className='cursor-pointer'> <h1 className="text-xl font-bold text-white">Fynn Emmanuel Junior</h1></a>
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map(link => (
             <a key={link} href={`#${link.toLowerCase()}`} className="text-gray-300 hover:text-teal-400 transition-colors">{link}</a>
@@ -228,7 +228,7 @@ const ContactSection = () => (
             </div>
             <div>
                 <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" rows="4" placeholder="Your Message" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"></textarea>
+                <textarea id="message" rows={4} placeholder="Your Message" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"></textarea>
             </div>
             <button type="submit" className="w-full bg-teal-500 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-600 transition-colors">Send Message</button>
         </motion.form>
