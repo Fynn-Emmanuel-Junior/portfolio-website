@@ -134,7 +134,7 @@ const HeroSection = () => (
                 <a href="#contact" className="border-2 border-gray-500 text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-gray-700 hover:border-gray-700 transition-all">Contact Me</a>
             </motion.div>
         </motion.div>
-        <motion.div variants={fadeIn()} className="relative hidden md:block">
+        <motion.div variants={fadeIn()} className="relative">
             <div className="absolute inset-0 bg-teal-500/10 rounded-3xl transform -rotate-6"></div>
             <Image 
                 src={Image1} 
