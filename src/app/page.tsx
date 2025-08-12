@@ -99,13 +99,15 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0.5 h-full w-3/4 max-w-sm  p-8"
+            className="fixed -top-10 -right-10 h-full w-3/4 max-w-sm  p-8"
           >
-            <div className='bg-slate-800'>
-              <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-gray-400">
-                <X size={28} />
-              </button>
-              <nav className="flex flex-col space-y-8 mt-16">
+            <div className='bg-slate-800 h-[1000px]'>
+              <div className='flex flex-col items-end pr-10'>
+                <button onClick={() => setIsOpen(false)} className=" text-gray-400  py-12">
+                  <X size={28} />
+                </button>
+              </div>
+              <nav className="flex flex-col gap-9 font-plus pl-5">
                 {navLinks.map(link => (
                   <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-white hover:text-teal-400 transition-colors">{link}</a>
                 ))}
