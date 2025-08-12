@@ -51,30 +51,47 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = ['About', 'Skills', 'Projects', 'Testimonials', 'Contact'];
 
+  // Function to handle smooth scrolling
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 80; // Adjust this based on your fixed header's height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false); // Close mobile menu on click
+  };
+
   return (
-    <header className="fixed font-plus top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg z-50 border-b border-slate-700/50">
+    <header className="fixed font-plus top-0 left-0 right-0 backdrop-blur-lg bg-slate-900/80 z-50 border-b border-slate-700/50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
        <a href="/" className='cursor-pointer'> <h1 className="text-xl font-bold text-white">Fynn Emmanuel Junior</h1></a>
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map(link => (
-            <a key={link} href={`#${link.toLowerCase()}`} className="text-gray-300 hover:text-teal-400 transition-colors">{link}</a>
+            <a key={link} href={`#${link.toLowerCase()}`} onClick={(e) => handleLinkClick(e,link.toLowerCase())} className="text-gray-300 hover:text-teal-400 transition-colors">{link}</a>
           ))}
         </nav>
         <button onClick={() => setIsOpen(true)} className="md:hidden text-gray-300">
           <Menu size={28} />
         </button>
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 z-40"
+            className="fixed inset-0 bg-black/70 z-40 border-red-600 border-2"
             onClick={() => setIsOpen(false)}
           />
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -82,16 +99,18 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-slate-800 z-50 p-8"
+            className="fixed top-0 right-0.5 h-full w-3/4 max-w-sm  p-8"
           >
-            <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-gray-400">
-              <X size={28} />
-            </button>
-            <nav className="flex flex-col space-y-8 mt-16">
-              {navLinks.map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-white hover:text-teal-400 transition-colors">{link}</a>
-              ))}
-            </nav>
+            <div className='bg-slate-800'>
+              <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-gray-400">
+                <X size={28} />
+              </button>
+              <nav className="flex flex-col space-y-8 mt-16">
+                {navLinks.map(link => (
+                  <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-white hover:text-teal-400 transition-colors">{link}</a>
+                ))}
+              </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -142,7 +161,7 @@ const AboutMeSection = () => (
 );
 
 // --- Skills Section ---
-const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'Open AI API Integration'];
+const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'AI Integration'];
 const SkillsSection = () => (
     <SectionWrapper id="skills" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
@@ -253,7 +272,7 @@ const Footer = () => (
 // --- Main Page Component ---
 export default function PortfolioPage() {
   return (
-    <div className="bg-gray-100">
+    <div className={`bg-gray-100`}>
       <Header />
       <main>
         <HeroSection />
