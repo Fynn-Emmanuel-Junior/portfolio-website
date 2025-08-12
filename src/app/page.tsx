@@ -1,103 +1,269 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Star, Twitter, Linkedin, Github, Code, Briefcase, Mail } from 'lucide-react';
+import Image1 from '../assets/4.jpg';
+
+// --- Animation Variants ---
+const fadeIn = (direction = 'up', delay = 0) => ({
+  initial: {
+    y: direction === 'up' ? 40 : -40,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+      delay,
+      ease: [0.6, -0.05, 0.01, 0.99],
+    },
+  },
+});
+
+const staggerContainer = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// --- Reusable Components ---
+const SectionWrapper = ({ children, id, className = '' }: any) => (
+  <motion.section
+    id={id}
+    className={`py-20 md:py-28 px-6 container mx-auto ${className}`}
+    initial="initial"
+    whileInView="animate"
+    viewport={{ once: true, amount: 0.1 }}
+    variants={staggerContainer}
+  >
+    {children}
+  </motion.section>
+);
+
+// --- Header Component ---
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const navLinks = ['About', 'Skills', 'Projects', 'Testimonials', 'Contact'];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <header className="fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-lg z-50 border-b border-slate-700/50">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold text-white">Fynn Emmanuel Junior</h1>
+        <nav className="hidden md:flex items-center space-x-8">
+          {navLinks.map(link => (
+            <a key={link} href={`#${link.toLowerCase()}`} className="text-gray-300 hover:text-teal-400 transition-colors">{link}</a>
+          ))}
+        </nav>
+        <button onClick={() => setIsOpen(true)} className="md:hidden text-gray-300">
+          <Menu size={28} />
+        </button>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 z-40"
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-slate-800 z-50 p-8"
+          >
+            <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-gray-400">
+              <X size={28} />
+            </button>
+            <nav className="flex flex-col space-y-8 mt-16">
+              {navLinks.map(link => (
+                <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-white hover:text-teal-400 transition-colors">{link}</a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+// --- Hero Section ---
+const HeroSection = () => (
+  <section className="relative bg-slate-900 text-white pt-32 pb-20 md:pt-48 md:pb-28">
+    <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <motion.div initial="initial" animate="animate" variants={staggerContainer}>
+            <motion.h1 variants={fadeIn('up')} className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                Full-Stack & Mobile App Developer
+            </motion.h1>
+            <motion.p variants={fadeIn('up', 0.2)} className="text-lg md:text-xl max-w-xl text-gray-300 mb-8">
+                Crafting robust, scalable, and user-centric applications from concept to deployment.
+            </motion.p>
+            <motion.div variants={fadeIn('up', 0.4)} className="flex items-center space-x-4">
+                <a href="#projects" className="bg-teal-500 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg hover:bg-teal-600 transition-all">View My Work</a>
+                <a href="#contact" className="border-2 border-gray-500 text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-gray-700 hover:border-gray-700 transition-all">Contact Me</a>
+            </motion.div>
+        </motion.div>
+        <motion.div variants={fadeIn()} className="relative hidden md:block">
+            <div className="absolute inset-0 bg-teal-500/10 rounded-3xl transform -rotate-6"></div>
+            <Image 
+                src={Image1} 
+                alt="Fynn Emmanuel Junoir"
+                width={500}
+                height={500}
+                className="rounded-2xl shadow-2xl relative"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        </motion.div>
+    </div>
+  </section>
+);
+
+// --- About Me Section ---
+const AboutMeSection = () => (
+  <SectionWrapper id="about" className="bg-slate-800 text-white">
+    <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold mb-12 text-center">About Me</motion.h2>
+    <div className="max-w-4xl mx-auto text-center">
+        <motion.p variants={fadeIn()} className="text-xl text-gray-300 leading-relaxed">
+            I am a passionate developer with a strong foundation in both front-end and back-end development, bringing a holistic approach to every project. My expertise spans across various platforms and technologies, allowing me to design, build, and deploy high-performance web and mobile applications. I am committed to continuous learning and staying up-to-date with the latest industry trends and cutting-edge solutions.
+        </motion.p>
+    </div>
+  </SectionWrapper>
+);
+
+// --- Skills Section ---
+const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'Prisma', 'AWS', 'Docker', 'TypeScript'];
+const SkillsSection = () => (
+    <SectionWrapper id="skills">
+        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
+        <motion.div variants={staggerContainer} className="flex flex-wrap gap-4 justify-center">
+            {skills.map(skill => (
+                <motion.div key={skill} variants={fadeIn()} className="bg-white text-gray-800 px-6 py-3 rounded-md font-semibold text-lg shadow-md border border-gray-200">
+                    {skill}
+                </motion.div>
+            ))}
+        </motion.div>
+    </SectionWrapper>
+);
+
+// --- Projects Section ---
+const projects = [
+  { title: 'Project Alpha', description: 'Web App, React, Node.js, PostgreSQL', image: '/project-alpha.png' },
+  { title: 'Project Beta', description: 'Mobile App, React Native', image: '/project-beta.png' },
+  { title: 'Project Gamma', description: 'Web App, Next.js, Stripe API', image: '/project-gamma.png' },
+];
+const ProjectsSection = () => (
+    <SectionWrapper id="projects" className="bg-white">
+        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Featured Projects</motion.h2>
+        <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {projects.map(project => (
+                <motion.div key={project.title} variants={fadeIn()} className="bg-white rounded-lg shadow-lg overflow-hidden group border border-gray-200 hover:-translate-y-2 transition-transform duration-300">
+                    <div className="relative h-56 bg-gray-100 flex items-center justify-center">
+                        <Briefcase className="w-16 h-16 text-gray-300" />
+                    </div>
+                    <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                        <p className="text-gray-600 mb-4">{project.description}</p>
+                        <div className="flex space-x-4">
+                            <a href="#" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
+                            <a href="#" className="text-teal-600 font-semibold hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </motion.div>
+            ))}
+        </motion.div>
+    </SectionWrapper>
+);
+
+// --- Testimonials Section ---
+const testimonials = [
+    { name: 'Sophia Carter', stars: 5, quote: 'Fynn’s work on our project was exceptional. His technical skills and attention to detail ensured a smooth and successful launch. We would absolutely partner with him again.' },
+    { name: 'Ethan Bennett', stars: 5, quote: 'Fynn is a highly efficient developer who consistently delivers high-quality work. His ability to understand complex requirements and translate them into functional code is remarkable.' },
+];
+const TestimonialsSection = () => (
+    <SectionWrapper id="testimonials">
+        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">What Clients Say</motion.h2>
+        <motion.div variants={staggerContainer} className="max-w-3xl mx-auto grid md:grid-cols-2 gap-8">
+            {testimonials.map(t => (
+                <motion.div key={t.name} variants={fadeIn()} className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div className="flex items-center mb-4">
+                        <Image src={Image1} alt={t.name} width={48} height={48} className="rounded-full mr-4" />
+                        <div>
+                            <h4 className="font-bold text-gray-800">{t.name}</h4>
+                            <div className="flex">
+                                {[...Array(t.stars)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />)}
+                            </div>
+                        </div>
+                    </div>
+                    <p className="text-gray-600 italic">&quot;{t.quote}&quot;</p>
+                </motion.div>
+            ))}
+        </motion.div>
+    </SectionWrapper>
+);
+
+// --- Contact Section ---
+const ContactSection = () => (
+    <SectionWrapper id="contact" className="bg-white">
+        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Let&apos;s Build Together</motion.h2>
+        <motion.p variants={fadeIn(undefined, 0.2)} className="text-lg text-gray-600 mb-8 text-center max-w-2xl mx-auto">Have a project in mind? I&apos;d love to hear about it. Fill out the form below or send me an email.</motion.p>
+        <motion.form variants={fadeIn()} className="max-w-xl mx-auto space-y-4">
+            <div>
+                <label htmlFor="name" className="sr-only">Name</label>
+                <input type="text" id="name" placeholder="Your Name" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
+            </div>
+            <div>
+                <label htmlFor="email" className="sr-only">Email</label>
+                <input type="email" id="email" placeholder="Your Email" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
+            </div>
+            <div>
+                <label htmlFor="message" className="sr-only">Message</label>
+                <textarea id="message" rows="4" placeholder="Your Message" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"></textarea>
+            </div>
+            <button type="submit" className="w-full bg-teal-500 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-600 transition-colors">Send Message</button>
+        </motion.form>
+    </SectionWrapper>
+);
+
+// --- Footer ---
+const Footer = () => (
+    <footer className="bg-slate-900 text-gray-400">
+        <div className="container mx-auto px-6 py-8 text-center">
+            <div className="flex justify-center space-x-6 mb-4">
+                <a href="#" className="hover:text-teal-400"><Twitter /></a>
+                <a href="#" className="hover:text-teal-400"><Linkedin /></a>
+                <a href="#" className="hover:text-teal-400"><Github /></a>
+            </div>
+            <p>&copy; 2025 Fynn Emmanuel Junior. All rights reserved.</p>
         </div>
+    </footer>
+);
+
+
+// --- Main Page Component ---
+export default function PortfolioPage() {
+  return (
+    <div className="bg-gray-100">
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutMeSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <TestimonialsSection />
+        <ContactSection />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
