@@ -142,7 +142,7 @@ const AboutMeSection = () => (
 );
 
 // --- Skills Section ---
-const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'Prisma', 'AWS', 'Docker', 'TypeScript'];
+const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'Open AI API Integration'];
 const SkillsSection = () => (
     <SectionWrapper id="skills" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
