@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, Star, Twitter, Linkedin, Github, Code, Briefcase, Mail } from 'lucide-react';
 import Image1 from '../assets/4.jpg';
+import toast, { Toaster } from "react-hot-toast";
+import emailjs from "emailjs-com";
 
 // --- Animation Variants ---
 const fadeIn = (direction = 'up', delay = 0):  Variants => ({
@@ -234,27 +236,91 @@ const TestimonialsSection = () => (
 );
 
 // --- Contact Section ---
-const ContactSection = () => (
+const ContactSection = () => {
+  const [isSending, setIsSending] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const form = e.target as HTMLFormElement;
+    
+    emailjs.sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      form,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => {
+      toast.success('Message sent successfully!');
+      form.reset();
+    })
+    .catch((error) => {
+      toast.error('Failed to send message: ' + error.text);
+    })
+    .finally(() => {
+      setIsSending(false);
+    });
+  };
+
+  return (
     <SectionWrapper id="contact" className="bg-white font-plus">
-        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Let&apos;s Build Together</motion.h2>
-        <motion.p variants={fadeIn(undefined, 0.2)} className="text-lg text-gray-600 mb-8 text-center max-w-2xl mx-auto">Have a project in mind? I&apos;d love to hear about it. Fill out the form below or send me an email.</motion.p>
-        <motion.form variants={fadeIn()} className="max-w-xl mx-auto space-y-4">
-            <div>
-                <label htmlFor="name" className="sr-only">Name</label>
-                <input type="text" id="name" placeholder="Your Name" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
-            </div>
-            <div>
-                <label htmlFor="email" className="sr-only">Email</label>
-                <input type="email" id="email" placeholder="Your Email" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
-            </div>
-            <div>
-                <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" rows={4} placeholder="Your Message" className="mt-1 block w-full px-4 py-3 bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"></textarea>
-            </div>
-            <button type="submit" className="w-full bg-teal-500 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-600 transition-colors">Send Message</button>
-        </motion.form>
+        <Toaster position="top-right" reverseOrder={false} />
+      <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">
+        Let&apos;s Build Together
+      </motion.h2>
+      <motion.p variants={fadeIn(undefined, 0.2)} className="text-lg text-gray-600 mb-8 text-center max-w-2xl mx-auto">
+        Have a project in mind? I&apos;d love to hear about it. Fill out the form below or send me an email.
+      </motion.p>
+      <motion.form 
+        onSubmit={handleSubmit}
+        variants={fadeIn()} 
+        className="max-w-xl mx-auto space-y-4"
+      >
+        <div>
+          <label htmlFor="name" className="sr-only">Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="from_name"
+            placeholder="Your Name" 
+            className="mt-1 block w-full px-4 py-3 bg-gray-100 text-black border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="sr-only">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="from_email"
+            placeholder="Your Email" 
+            className="mt-1 block w-full px-4 py-3 bg-gray-100 text-black border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="sr-only">Message</label>
+          <textarea 
+            id="message" 
+            name="message"
+            rows={4} 
+            placeholder="Your Message" 
+            className="mt-1 block w-full px-4 py-3 text-black bg-gray-100 border-2 border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+            required
+          ></textarea>
+        </div>
+        <button 
+          type="submit" 
+          disabled={isSending}
+          className="w-full bg-teal-500 text-white py-3 px-4 rounded-md font-semibold hover:bg-teal-600 transition-colors disabled:opacity-70 cursor-pointer"
+        >
+          {isSending ? 'Sending...' : 'Send Message'}
+        </button>
+      </motion.form>
     </SectionWrapper>
-);
+  );
+};
 
 // --- Footer ---
 const Footer = () => (
