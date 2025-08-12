@@ -261,7 +261,7 @@ const Footer = () => (
     <footer className="bg-slate-900 text-gray-400 font-plus">
         <div className="container mx-auto px-6 py-8 text-center">
             <div className="flex justify-center space-x-6 mb-4">
-                <a href="#" className="hover:text-teal-400"><Twitter /></a>
+                {/* <a href="#" className="hover:text-teal-400"><Twitter /></a> */}
                 <a href="#" className="hover:text-teal-400"><Linkedin /></a>
                 <a href="#" className="hover:text-teal-400"><Github /></a>
             </div>
