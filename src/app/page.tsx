@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, Star, Twitter, Linkedin, Github, Code, Briefcase, Mail } from 'lucide-react';
 import Image1 from '../assets/4.jpg';
+import port1 from '../assets/portfolio1.png';
+import port2 from '../assets/portfolio2.png';
+import port3 from '../assets/portfolio3.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
@@ -165,7 +168,7 @@ const AboutMeSection = () => (
 );
 
 // --- Skills Section ---
-const skills = ['React', 'React Native', 'Next.js', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'AI Integration'];
+const skills = ['React', 'React Native', 'Next.js','Figma', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'AI Integration','Digital Ocean'];
 const SkillsSection = () => (
     <SectionWrapper id="skills" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
@@ -181,9 +184,9 @@ const SkillsSection = () => (
 
 // --- Projects Section ---
 const projects = [
-  { title: 'Project Alpha', description: 'Web App, React, Node.js, PostgreSQL', image: '/project-alpha.png' },
-  { title: 'Project Beta', description: 'Mobile App, React Native', image: '/project-beta.png' },
-  { title: 'Project Gamma', description: 'Web App, Next.js, Stripe API', image: '/project-gamma.png' },
+  { title: 'Portfolio website', description: 'Next js, EmailJS,Tailwind css,Typescript,Framer motion', image: port1,link: 'https://fynn-dev.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
+  { title: 'GoVibe Website', description: 'Next js, Tailwind css,typescript,Framer motion', image: port2,link: 'https://govibe-six.vercel.app/',github: 'https://github.com/GoVibee/landing-page' },
+  { title: 'Kodo Scholarships', description: 'React JS,Tailwind CSS,Redux,Node JS,Express JS,Mongo DB,Tawk Chatbot,Digital Ocean', image: port3,link: 'https://kodo-web-eta.vercel.app/',github: 'https://github.com/Kodo-UG/kodo-web' },
 ];
 const ProjectsSection = () => (
     <SectionWrapper id="projects" className="bg-white font-plus">
@@ -192,14 +195,19 @@ const ProjectsSection = () => (
             {projects.map(project => (
                 <motion.div key={project.title} variants={fadeIn()} className="bg-white rounded-lg shadow-lg overflow-hidden group border border-gray-200 hover:-translate-y-2 transition-transform duration-300">
                     <div className="relative h-56 bg-gray-100 flex items-center justify-center">
-                        <Briefcase className="w-16 h-16 text-gray-300" />
+                        <Image 
+                          src={project.image}
+                          className='w-full h-full'
+                          alt='project-image'
+                          priority
+                        />
                     </div>
                     <div className="p-6">
                         <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
                         <p className="text-gray-600 mb-4">{project.description}</p>
                         <div className="flex space-x-4">
-                            <a href="#" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
-                            <a href="#" className="text-teal-600 font-semibold hover:underline">GitHub</a>
+                            <a href={project.link} className="text-teal-600 font-semibold hover:underline">Live Demo</a>
+                            <a href={project.github} className="text-teal-600 font-semibold hover:underline">GitHub</a>
                         </div>
                     </div>
                 </motion.div>
