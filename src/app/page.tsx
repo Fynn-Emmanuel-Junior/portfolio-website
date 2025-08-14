@@ -358,7 +358,7 @@ export default function PortfolioPage() {
         <AboutMeSection />
         <SkillsSection />
         <ProjectsSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <ContactSection />
       </main>
       <Footer />
