@@ -56,7 +56,7 @@ const SectionWrapper = ({ children, id, className = '' }: any) => (
 // --- Header Component ---
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navLinks = ['About', 'Skills', 'Projects', 'Testimonials', 'Contact'];
+  const navLinks = ['About', 'Skills', 'Projects', 'Contact'];
 
   // Function to handle smooth scrolling
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
