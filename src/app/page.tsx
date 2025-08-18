@@ -10,6 +10,7 @@ import port2 from '../assets/portfolio2.png';
 import port3 from '../assets/portfolio3.png';
 import port4 from '../assets/port4.jpg';
 import port5 from '../assets/port5.png';
+import port5 from '../assets/port6.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
@@ -190,7 +191,7 @@ const projects = [
   { title: 'GoVibe Website', description: 'Next js, Tailwind css,typescript,Framer motion', image: port2,link: 'https://govibe-six.vercel.app/',github: 'https://github.com/GoVibee/landing-page' },
   { title: 'Kodo Scholarships', description: 'React JS,Tailwind CSS,Redux,Node JS,Express JS,Mongo DB,Tawk Chatbot,Digital Ocean', image: port3,link: 'https://kodo-web-gamma.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/kodo-web'},
   { title: 'Kodo Scholarships Mobile App ', description: 'React Native JS,Expo and EAS,App store connect,Playstore,Expo notifications, Async Storage, Expo Server,Node JS,Express JS,Mongo DB,Digital Ocean', image: port5,link: 'https://apps.apple.com/app/id6745784862',github: 'https://github.com/Kodo-UG/kodo-mobile-app'},
-  { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port5,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
+  { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port6,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
 ];
 const ProjectsSection = () => (
     <SectionWrapper id="projects" className="bg-white font-plus">
