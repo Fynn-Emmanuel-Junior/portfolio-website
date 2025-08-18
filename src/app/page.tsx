@@ -10,7 +10,7 @@ import port2 from '../assets/portfolio2.png';
 import port3 from '../assets/portfolio3.png';
 import port4 from '../assets/port4.jpg';
 import port5 from '../assets/port5.png';
-import port5 from '../assets/port6.png';
+import port6 from '../assets/port6.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
