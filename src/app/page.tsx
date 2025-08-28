@@ -11,6 +11,7 @@ import port3 from '../assets/portfolio3.png';
 import port4 from '../assets/port4.jpg';
 import port5 from '../assets/port5.png';
 import port6 from '../assets/port6.png';
+import port7 from '../assets/port7.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
@@ -189,9 +190,11 @@ const SkillsSection = () => (
 const projects = [
   { title: 'Portfolio website', description: 'Next js, EmailJS,Tailwind css,Typescript,Framer motion', image: port1,link: 'https://fynn-dev.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
   { title: 'GoVibe Website', description: 'Next js, Tailwind css,typescript,Framer motion', image: port2,link: 'https://govibe-six.vercel.app/',github: 'https://github.com/GoVibee/landing-page' },
-  { title: 'Kodo Scholarships', description: 'React JS,Tailwind CSS,Redux,Node JS,Express JS,Mongo DB,Tawk Chatbot,Digital Ocean', image: port3,link: 'https://kodo-web-gamma.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/kodo-web'},
+  { title: 'Kodo Scholarships', description: 'React JS,Tailwind CSS,Redux,Node JS,Express JS,Mongo DB,Tawk Chatbot,Digital Ocean,Firebase Storage', image: port3,link: 'https://kodo-web-gamma.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/kodo-web'},
   { title: 'Kodo Scholarships Mobile App ', description: 'React Native JS,Expo and EAS,App store connect,Playstore,Expo notifications, Async Storage, Expo Server,Node JS,Express JS,Mongo DB,Digital Ocean', image: port5,link: 'https://apps.apple.com/app/id6745784862',github: 'https://github.com/Kodo-UG/kodo-mobile-app'},
-  { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port6,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
+  { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port7,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
+   { title: 'DMS ', description: 'Next js , Tailwind css,typescript,Nest JS , Postgresql', image: port6,link: 'https://dcs-dms.vercel.app/sign-in'}
+  
 ];
 const ProjectsSection = () => (
     <SectionWrapper id="projects" className="bg-white font-plus">
