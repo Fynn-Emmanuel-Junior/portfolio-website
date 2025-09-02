@@ -272,22 +272,22 @@ const ProjectsSection = () => {
                     {projects.map(project => (
                         <a href={project.link} key={project.title} className="px-2 cursor-pointer md:px-4 h-64 w-full">
                             <div className="bg-white w-full text-gray-800 rounded-lg shadow-lg overflow-hidden group border border-gray-700 hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
-                                <a href={project.link} className="cursor-pointer relative h-56 bg-gray-100 flex items-center justify-center">
+                                <div className="cursor-pointer relative h-56 bg-gray-100 flex items-center justify-center">
                                     <Image 
                                         src={project.image}
                                         className='w-full h-full object-cover'
                                         alt={project.title}
                                         priority
                                     />
-                                </a>
-                                <a href={project.link} className="p-6 cursor-pointer flex flex-col flex-grow">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                                </div>
+                                <div className="p-6 cursor-pointer flex flex-col flex-grow">
+                                    <h3 className="text-[12px]  md:text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
                                     {/* <p className="text-gray-600 mb-4 flex-grow">{project.description}</p> */}
                                     {/* <div className="flex space-x-4 mt-auto pt-4">
                                         <a  target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
                                         
                                     </div> */}
-                                </a>
+                                </div>
                             </div>
                         </a>
                     ))}
