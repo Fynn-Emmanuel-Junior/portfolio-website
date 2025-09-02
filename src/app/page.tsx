@@ -224,15 +224,17 @@ const projects = [
   
 ];
 const ProjectsSection = () => {
+    // Enhanced slider settings for better responsiveness on all mobile sizes.
     const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 3, // Default for desktop screens
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-         responsive: [
+        // Responsive breakpoints for tablet and mobile devices
+        responsive: [
             {
                 breakpoint: 1024, // For tablets
                 settings: {
@@ -263,12 +265,12 @@ const ProjectsSection = () => {
     };
 
     return (
-        <SectionWrapper id="projects" className="bg-slate-800 text-white font-plus">
+        <SectionWrapper id="projects" className="bg-slate-800 text-white font-plus overflow-hidden">
             <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</motion.h2>
             <motion.div variants={fadeIn()} className="w-full">
                 <Slider {...sliderSettings}>
                     {projects.map(project => (
-                        <div key={project.title} className="px-2 md:px-4">
+                        <div key={project.title} className="px-2 md:px-4 h-full">
                             <div className="bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden group border border-gray-700 hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                                 <div className="relative h-56 bg-gray-100 flex items-center justify-center">
                                     <Image 
@@ -283,7 +285,7 @@ const ProjectsSection = () => {
                                     <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
                                     <div className="flex space-x-4 mt-auto pt-4">
                                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
-                                        {/* <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">GitHub</a> */}
+                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">GitHub</a>
                                     </div>
                                 </div>
                             </div>
