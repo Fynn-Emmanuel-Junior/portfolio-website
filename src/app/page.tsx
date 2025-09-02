@@ -226,7 +226,6 @@ const projects = [
 const ProjectsSection = () => {
     // Enhanced slider settings for better responsiveness on all mobile sizes.
     const sliderSettings = {
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3, // Default for desktop screens
