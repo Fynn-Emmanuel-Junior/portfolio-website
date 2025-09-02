@@ -12,8 +12,14 @@ import port4 from '../assets/port4.jpg';
 import port5 from '../assets/port5.png';
 import port6 from '../assets/port6.png';
 import port7 from '../assets/port7.png';
+import port8 from '../assets/port8.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
+
+// Import Carousel library and its styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 // --- Animation Variants ---
 const fadeIn = (direction = 'up', delay = 0):  Variants => ({
@@ -130,34 +136,52 @@ const Header = () => {
 };
 
 // --- Hero Section ---
-const HeroSection = () => (
-  <section className="relative bg-slate-900 text-white pt-32 pb-20 md:pt-48 md:pb-28 font-plus">
-    <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <motion.div initial="initial" animate="animate" variants={staggerContainer}>
-            <motion.h1 variants={fadeIn('up')} className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-                Full-Stack & Mobile App Developer
-            </motion.h1>
-            <motion.p variants={fadeIn('up', 0.2)} className="text-lg md:text-xl max-w-xl text-gray-300 mb-8">
-                Crafting robust, scalable, and user-centric applications from concept to deployment.
-            </motion.p>
-            <motion.div variants={fadeIn('up', 0.4)} className="flex items-center space-x-4">
-                <a href="#projects" className="bg-teal-500 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg hover:bg-teal-600 transition-all">View My Work</a>
-                <a href="#contact" className="border-2 border-gray-500 text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-gray-700 hover:border-gray-700 transition-all">Contact Me</a>
-            </motion.div>
-        </motion.div>
-        <motion.div variants={fadeIn()} className="relative">
-            <div className="absolute inset-0 bg-teal-500/10 rounded-3xl transform -rotate-6"></div>
-            <Image 
-                src={Image1} 
-                alt="Fynn Emmanuel Junoir"
-                width={500}
-                height={500}
-                className="rounded-2xl shadow-2xl relative"
-            />
-        </motion.div>
-    </div>
-  </section>
-);
+const HeroSection = () => {
+    // Function to handle smooth scrolling for hero buttons
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+        e.preventDefault();
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const headerOffset = 80; // Height of the fixed header
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+    return (
+        <section className="relative bg-slate-900 text-white pt-32 pb-20 md:pt-48 md:pb-28 font-plus">
+            <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <motion.div initial="initial" animate="animate" variants={staggerContainer}>
+                    <motion.h1 variants={fadeIn('up')} className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                        Full-Stack & Mobile App Developer
+                    </motion.h1>
+                    <motion.p variants={fadeIn('up', 0.2)} className="text-lg md:text-xl max-w-xl text-gray-300 mb-8">
+                        Crafting robust, scalable, and user-centric applications from concept to deployment.
+                    </motion.p>
+                    <motion.div variants={fadeIn('up', 0.4)} className="flex items-center space-x-4">
+                        <a href="#projects" onClick={(e) => handleLinkClick(e, 'projects')} className="bg-teal-500 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg hover:bg-teal-600 transition-all">View My Work</a>
+                        <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')} className="border-2 border-gray-500 text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-gray-700 hover:border-gray-700 transition-all">Contact Me</a>
+                    </motion.div>
+                </motion.div>
+                <motion.div variants={fadeIn()} className="relative hidden md:block">
+                    <div className="absolute inset-0 bg-teal-500/10 rounded-3xl transform -rotate-6"></div>
+                    <Image 
+                        src={Image1} 
+                        alt="Fynn Emmanuel Junoir"
+                        width={500}
+                        height={500}
+                        className="rounded-2xl shadow-2xl relative"
+                    />
+                </motion.div>
+            </div>
+        </section>
+    )
+};
+
 
 // --- About Me Section ---
 const AboutMeSection = () => (
@@ -193,36 +217,68 @@ const projects = [
   { title: 'Kodo Scholarships', description: 'React JS,Tailwind CSS,Redux,Node JS,Express JS,Mongo DB,Tawk Chatbot,Digital Ocean,Firebase Storage', image: port3,link: 'https://kodo-web-gamma.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/kodo-web'},
   { title: 'Kodo Scholarships Mobile App ', description: 'React Native JS,Expo and EAS,App store connect,Playstore,Expo notifications, Async Storage, Expo Server,Node JS,Express JS,Mongo DB,Digital Ocean', image: port5,link: 'https://apps.apple.com/app/id6745784862',github: 'https://github.com/Kodo-UG/kodo-mobile-app'},
   { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port6,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
-   { title: 'DMS ', description: 'Next js , Tailwind css,typescript,Nest JS , Postgresql', image: port7,link: 'https://dcs-dms.vercel.app/sign-in'}
+   { title: 'DMS ', description: 'Next js , Tailwind css,typescript,Nest JS , Postgresql', image: port7,link: 'https://dcs-dms.vercel.app/sign-in'},
+   { title: 'La Ruche health ', description: 'Next js , Tailwind css,typescript,Django , Postgresql,AI chatbot', image: port8,link: 'https://www.laruche.health/en'}
   
 ];
-const ProjectsSection = () => (
-    <SectionWrapper id="projects" className="bg-white font-plus">
-        <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Featured Projects</motion.h2>
-        <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map(project => (
-                <motion.div key={project.title} variants={fadeIn()} className="bg-white rounded-lg shadow-lg overflow-hidden group border border-gray-200 hover:-translate-y-2 transition-transform duration-300">
-                    <div className="relative h-56 bg-gray-100 flex items-center justify-center">
-                        <Image 
-                          src={project.image}
-                          className='w-full h-full'
-                          alt='project-image'
-                          priority
-                        />
-                    </div>
-                    <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-                        <p className="text-gray-600 mb-4">{project.description}</p>
-                        <div className="flex space-x-4">
-                            <a href={project.link} className="text-teal-600 font-semibold hover:underline">Live Demo</a>
-                            <a href={project.github} className="text-teal-600 font-semibold hover:underline">GitHub</a>
+const ProjectsSection = () => {
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    };
+
+    return (
+        <SectionWrapper id="projects" className="bg-slate-800 text-white font-plus">
+            <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</motion.h2>
+            <motion.div variants={fadeIn()} className="w-full">
+                <Slider {...sliderSettings}>
+                    {projects.map(project => (
+                        <div key={project.title} className="px-2 md:px-4">
+                            <div className="bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden group border border-gray-700 hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
+                                <div className="relative h-56 bg-gray-100 flex items-center justify-center">
+                                    <Image 
+                                        src={project.image}
+                                        className='w-full h-full object-cover'
+                                        alt={project.title}
+                                        priority
+                                    />
+                                </div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                                    <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
+                                    <div className="flex space-x-4 mt-auto pt-4">
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
+                                        {/* <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">GitHub</a> */}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </motion.div>
-            ))}
-        </motion.div>
-    </SectionWrapper>
-);
+                    ))}
+                </Slider>
+            </motion.div>
+        </SectionWrapper>
+    );
+};
+
 
 // --- Testimonials Section ---
 const testimonials = [
@@ -344,8 +400,8 @@ const Footer = () => (
         <div className="container mx-auto px-6 py-8 text-center">
             <div className="flex justify-center space-x-6 mb-4">
                 {/* <a href="#" className="hover:text-teal-400"><Twitter /></a> */}
-                <a href="#" className="hover:text-teal-400"><Linkedin /></a>
-                <a href="#" className="hover:text-teal-400"><Github /></a>
+                {/* <a href="#" className="hover:text-teal-400"><Linkedin /></a> */}
+                <a href="https://github.com/Fynn-Emmanuel-Junior" className="hover:text-teal-400"><Github /></a>
             </div>
             <p>&copy; 2025 Fynn Emmanuel Junior. All rights reserved.</p>
         </div>
