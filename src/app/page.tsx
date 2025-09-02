@@ -285,7 +285,7 @@ const ProjectsSection = () => {
                                     <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
                                     <div className="flex space-x-4 mt-auto pt-4">
                                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">Live Demo</a>
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">GitHub</a>
+                                        {/* <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-semibold hover:underline">GitHub</a> */}
                                     </div>
                                 </div>
                             </div>
