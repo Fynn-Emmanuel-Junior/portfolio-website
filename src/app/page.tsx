@@ -232,17 +232,31 @@ const ProjectsSection = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        responsive: [
+         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1024, // For tablets
                 settings: {
                     slidesToShow: 2,
+                    slidesToScroll: 1,
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 768, // For larger mobile devices
                 settings: {
                     slidesToShow: 1,
+                    slidesToScroll: 1,
+                    // Center mode provides a better UX on mobile by showing partial slides
+                    centerMode: true,
+                    centerPadding: '40px', // Adjust padding to control the size of the partial slides
+                }
+            },
+            {
+                breakpoint: 480, // For smaller mobile devices
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: true,
+                    centerPadding: '20px',
                 }
             }
         ]
