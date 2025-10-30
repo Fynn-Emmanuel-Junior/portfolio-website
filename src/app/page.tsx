@@ -219,8 +219,8 @@ const projects = [
   { title: 'Kodo Scholarships Mobile App ', description: 'React Native JS,Expo and EAS,App store connect,Playstore,Expo notifications, Async Storage, Expo Server,Node JS,Express JS,Mongo DB,Digital Ocean', image: port5,link: 'https://apps.apple.com/app/id6745784862',github: 'https://github.com/Kodo-UG/kodo-mobile-app'},
   { title: 'GoVibe Admin ', description: 'Next js , Tailwind css,typescript', image: port6,link: 'https://govibe-admin.vercel.app/',github: 'https://github.com/GoVibee/admin'},
    { title: 'DMS ', description: 'Next js , Tailwind css,typescript,Nest JS , Postgresql', image: port7,link: 'https://dcs-dms.vercel.app/sign-in'},
-   { title: 'La Ruche health ', description: 'Next js , Tailwind css,typescript,Django , Postgresql,AI chatbot', image: port8,link: 'https://www.laruche.health/en'},
-   { title: 'La Ruche health - Mobile app ', description: 'React Native , Expo and ,EAS , Sentry,typescript,Django , Postgresql,AI chatbot,,App store connect,Playstore,Expo notifications, Async Storage, Expo Server', image: port9,link: 'https://apps.apple.com/gh/app/la-ruche-health/id6451364839'}
+  //  { title: 'La Ruche health ', description: 'Next js , Tailwind css,typescript,Django , Postgresql,AI chatbot', image: port8,link: 'https://www.laruche.health/en'},
+  //  { title: 'La Ruche health - Mobile app ', description: 'React Native , Expo and ,EAS , Sentry,typescript,Django , Postgresql,AI chatbot,,App store connect,Playstore,Expo notifications, Async Storage, Expo Server', image: port9,link: 'https://apps.apple.com/gh/app/la-ruche-health/id6451364839'}
   
 ];
 const ProjectsSection = () => {
