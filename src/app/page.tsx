@@ -15,6 +15,7 @@ import port7 from '../assets/port7.png';
 import port8 from '../assets/port8.png';
 import port9 from '../assets/port9.png';
 import port10 from '../assets/port10.png';
+import port11 from '../assets/port11.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
@@ -214,6 +215,7 @@ const SkillsSection = () => (
 
 // --- Projects Section ---
 const projects = [
+  { title: 'PM-Website', description: 'Next js, Resend, Tailwind css,Typescript,Framer motion', image: port11,link: 'https://pm-webstite.vercel.app/',github: 'https://github.com/Paper-Merchant-Global/pm-webstite'},
   { title: 'NextDeal', description: 'Next js, Resend,FastAPI, Micorservice architecture , Tailwind css,Typescript,Framer motion, postgresql', image: port10,link: 'https://new.nextdeal.yoursoftwareengineers.com/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
   { title: 'Portfolio website', description: 'Next js, EmailJS,Tailwind css,Typescript,Framer motion', image: port1,link: 'https://fynn-dev.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
   { title: 'GoVibe Website', description: 'Next js, Tailwind css,typescript,Framer motion', image: port2,link: 'https://landing-page-8nug.vercel.app/',github: 'https://github.com/GoVibee/landing-page' },
