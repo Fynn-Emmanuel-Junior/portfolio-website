@@ -423,7 +423,7 @@ const Footer = () => (
                 {/* <a href="#" className="hover:text-teal-400"><Linkedin /></a> */}
                 <a href="https://github.com/Fynn-Emmanuel-Junior" className="hover:text-teal-400"><Github /></a>
             </div>
-            <p>&copy; 2025 Fynn Emmanuel Junior. All rights reserved.</p>
+            <p>&copy; 2026 Fynn Emmanuel Junior. All rights reserved.</p>
         </div>
     </footer>
 );
