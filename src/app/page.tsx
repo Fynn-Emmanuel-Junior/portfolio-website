@@ -16,6 +16,7 @@ import port8 from '../assets/port8.png';
 import port9 from '../assets/port9.png';
 import port10 from '../assets/port10.png';
 import port11 from '../assets/port11.png';
+import port12 from '../assets/port12.png';
 import toast, { Toaster } from "react-hot-toast";
 import emailjs from "emailjs-com";
 
@@ -199,7 +200,7 @@ const AboutMeSection = () => (
 );
 
 // --- Skills Section ---
-const skills = ['React', 'React Native', 'Next.js','Figma', 'Node.js', 'PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'AI Integration','Digital Ocean','Firebase Storage','FastAPI', 'Microservice architecture', 'Docker'];
+const skills = ['React', 'React Native', 'Next.js','Figma', 'Node.js','ExpressJs','Sanity CMS','PostgreSQL', 'MongoDB', 'NestJS', 'AWS', 'Knex','Tailwind CSS','Framer motion','ChartJS', 'TypeScript','Python','Django', 'HTML', 'CSS','Javascript','Redux Toolkits','Expo','EAS','Flutter', 'AI Integration','Digital Ocean','Firebase Storage','FastAPI', 'Microservice architecture', 'Docker'];
 const SkillsSection = () => (
     <SectionWrapper id="skills" className="font-plus">
         <motion.h2 variants={fadeIn()} className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">Core Technologies</motion.h2>
@@ -215,7 +216,7 @@ const SkillsSection = () => (
 
 // --- Projects Section ---
 const projects = [
-  { title: 'PM-Website', description: 'Next js, Resend, Tailwind css,Typescript,Framer motion', image: port11,link: 'https://pm-webstite.vercel.app/',github: 'https://github.com/Paper-Merchant-Global/pm-webstite'},
+  { title: 'Mfantsipim Anniversary', description: 'Next js, Resend, Tailwind css,Typescript,Framer motion', image: port12,link: 'https://moba-150-th.vercel.app/'},
   { title: 'NextDeal', description: 'Next js, Resend,FastAPI, Micorservice architecture , Tailwind css,Typescript,Framer motion, postgresql', image: port10,link: 'https://new.nextdeal.yoursoftwareengineers.com/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
   { title: 'Portfolio website', description: 'Next js, EmailJS,Tailwind css,Typescript,Framer motion', image: port1,link: 'https://fynn-dev.vercel.app/',github: 'https://github.com/Fynn-Emmanuel-Junior/portfolio-website'},
   { title: 'GoVibe Website', description: 'Next js, Tailwind css,typescript,Framer motion', image: port2,link: 'https://landing-page-8nug.vercel.app/',github: 'https://github.com/GoVibee/landing-page' },
